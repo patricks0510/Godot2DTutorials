@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 300
+@export var speed = 300
 var rocket_scene = preload("res://scenes/rocket.tscn")
 
 @onready var rocket_container = $RocketContainer
