@@ -6,6 +6,7 @@ signal took_damage
 var rocket_scene = preload("res://scenes/rocket.tscn")
 
 @onready var rocket_container = $RocketContainer
+@onready var rocket_shot = $RocketShot
 
 
 func _process(delta):
@@ -30,6 +31,7 @@ func _physics_process(delta):
 func shoot():
 	var rocket_instance = rocket_scene.instantiate()
 	rocket_container.add_child(rocket_instance)
+	rocket_shot.play()
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 80
 	
