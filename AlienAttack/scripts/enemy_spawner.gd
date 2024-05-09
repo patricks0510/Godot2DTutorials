@@ -4,7 +4,6 @@ signal enemy_spawned(enemy_instance)
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
 
-#@onready var enemy_container = $EnemyContainer
 @onready var spawn_positions = $SpawnPositions
 
 func _on_timer_timeout():
@@ -17,7 +16,4 @@ func spawn_enemy():
 	var enemy_insntance = enemy_scene.instantiate()
 	enemy_insntance.global_position = random_spawn_pos.global_position
 	emit_signal("enemy_spawned", enemy_insntance)
-	#add_child(enemy_insntance)
-	
-	
 	
