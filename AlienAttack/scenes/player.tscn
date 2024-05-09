@@ -9,6 +9,7 @@ height = 103.956
 
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.5708
+motion_mode = 1
 script = ExtResource("1_sh8qu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
