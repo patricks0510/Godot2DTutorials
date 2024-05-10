@@ -4,10 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bm0h36r6f3xeb" path="res://assets/textures/player_ship.png" id="2_w0deu"]
 [ext_resource type="AudioStream" uid="uid://cih7dr0jiwtu0" path="res://assets/audio/sfx_laser2.wav" id="3_q5bd5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pwys"]
-radius = 31.0119
-height = 103.956
-
 [sub_resource type="Gradient" id="Gradient_s2rut"]
 offsets = PackedFloat32Array(0.0115607, 0.508671, 0.99422)
 colors = PackedColorArray(1, 0.815686, 0, 0, 1, 0.403922, 0, 1, 1, 0, 0, 0)
@@ -37,11 +33,21 @@ scale_max = 10.0
 scale_curve = SubResource("CurveTexture_bnbhv")
 color_ramp = SubResource("GradientTexture1D_6uuxx")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pwys"]
+radius = 31.0119
+height = 103.956
+
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.5708
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_sh8qu")
+
+[node name="FlameParticleEffect" type="GPUParticles2D" parent="."]
+position = Vector2(1.44248e-06, 33)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_cxql2")
+lifetime = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -56,9 +62,3 @@ shape = SubResource("CapsuleShape2D_2pwys")
 
 [node name="RocketShot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_q5bd5")
-
-[node name="FlameParticleEffect" type="GPUParticles2D" parent="."]
-position = Vector2(1.44248e-06, 33)
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_cxql2")
-lifetime = 0.3
