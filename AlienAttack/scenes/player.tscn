@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d03y2bo3ceurg"]
+[gd_scene load_steps=10 format=3 uid="uid://d03y2bo3ceurg"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_sh8qu"]
 [ext_resource type="Texture2D" uid="uid://bm0h36r6f3xeb" path="res://assets/textures/player_ship.png" id="2_w0deu"]
@@ -7,6 +7,35 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pwys"]
 radius = 31.0119
 height = 103.956
+
+[sub_resource type="Gradient" id="Gradient_s2rut"]
+offsets = PackedFloat32Array(0.0115607, 0.508671, 0.99422)
+colors = PackedColorArray(1, 0.815686, 0, 0, 1, 0.403922, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6uuxx"]
+gradient = SubResource("Gradient_s2rut")
+
+[sub_resource type="Curve" id="Curve_ex7v1"]
+_data = [Vector2(0, 0.527472), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bnbhv"]
+curve = SubResource("Curve_ex7v1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxql2"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_bnbhv")
+color_ramp = SubResource("GradientTexture1D_6uuxx")
 
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.5708
@@ -27,3 +56,9 @@ shape = SubResource("CapsuleShape2D_2pwys")
 
 [node name="RocketShot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_q5bd5")
+
+[node name="FlameParticleEffect" type="GPUParticles2D" parent="."]
+position = Vector2(1.44248e-06, 33)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_cxql2")
+lifetime = 0.3
