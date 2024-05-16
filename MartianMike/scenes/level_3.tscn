@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmplotbm5t28t"]
+[gd_scene load_steps=10 format=3 uid="uid://dmplotbm5t28t"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_cbj0h"]
 [ext_resource type="PackedScene" uid="uid://db2o13vebmyln" path="res://scenes/bg.tscn" id="1_tba3i"]
@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://nuvujunjlsnw" path="res://scenes/exit.tscn" id="4_n6akf"]
 [ext_resource type="PackedScene" uid="uid://tj37ea0qktq6" path="res://scenes/player.tscn" id="5_7vdad"]
 [ext_resource type="PackedScene" uid="uid://cth4eqdx25mvh" path="res://scenes/deathzone.tscn" id="6_r4egm"]
+[ext_resource type="PackedScene" uid="uid://fxb8boqwinhh" path="res://scenes/ui_layer.tscn" id="9_4mcod"]
 
 [node name="Level_3" type="Node2D"]
 script = ExtResource("1_cbj0h")
+isFinalLevel = true
 
 [node name="BG" parent="." instance=ExtResource("1_tba3i")]
 bg_texture = ExtResource("3_itsqf")
@@ -31,3 +33,5 @@ position = Vector2(458, 225)
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Traps" type="Node2D" parent="."]
+
+[node name="UILayer" parent="." instance=ExtResource("9_4mcod")]

@@ -1,11 +1,14 @@
 extends Node2D
 
 @export var nextLevel: PackedScene = null
+@export var isFinalLevel: bool = false
 @export var level_time = 5
 
 @onready var start = $Start
 @onready var exit = $Exit
 @onready var deathzone = $Deathzone
+@onready var hud = $UILayer/HUD
+@onready var ui_layer = $UILayer
 
 var player = null
 
@@ -26,6 +29,7 @@ func _ready():
 	deathzone.body_entered.connect(_on_deathzone_body_entered)
 	
 	time_left = level_time
+	hud.set_time_label(time_left)
 	
 	timer_node = Timer.new()
 	timer_node.name = "Level Timer"
@@ -55,16 +59,21 @@ func reset_player():
 	
 
 func _on_exit_body_entered(body):
-	if body is Player && nextLevel!=null:
-		exit.animate()
-		player.active = false
-		win = true
-		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_packed(nextLevel)
+	if body is Player:
+		if isFinalLevel || nextLevel!=null:
+			exit.animate()
+			player.active = false
+			win = true
+			await get_tree().create_timer(1.5).timeout
+			if isFinalLevel:
+				ui_layer.show_win_screen(true)
+			get_tree().change_scene_to_packed(nextLevel)
 
 func _on_level_timer_timeout():
 	if win == false:
-		time_left -= 1	
+		time_left -= 1
+		hud.set_time_label(time_left)	
 		if time_left < 0:
 			reset_player()
 			time_left = level_time
+			hud.set_time_label(time_left)

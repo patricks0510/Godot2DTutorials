@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://77j75v4d5e6m"]
+[gd_scene load_steps=11 format=3 uid="uid://77j75v4d5e6m"]
 
 [ext_resource type="PackedScene" uid="uid://tj37ea0qktq6" path="res://scenes/player.tscn" id="1_3g6t1"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_rthm5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bhhnlproka2sy" path="res://assets/textures/bg/Green.png" id="4_uana2"]
 [ext_resource type="PackedScene" uid="uid://nuvujunjlsnw" path="res://scenes/exit.tscn" id="5_32v3a"]
 [ext_resource type="PackedScene" uid="uid://cth4eqdx25mvh" path="res://scenes/deathzone.tscn" id="6_4vtq5"]
+[ext_resource type="PackedScene" uid="uid://fxb8boqwinhh" path="res://scenes/ui_layer.tscn" id="10_dmmi2"]
 
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_rthm5")
@@ -33,3 +34,5 @@ position = Vector2(461, 145)
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Traps" type="Node2D" parent="."]
+
+[node name="UILayer" parent="." instance=ExtResource("10_dmmi2")]
