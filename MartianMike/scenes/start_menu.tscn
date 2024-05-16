@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmbth01pk44xp"]
+
+[ext_resource type="PackedScene" uid="uid://db2o13vebmyln" path="res://scenes/bg.tscn" id="1_7y1nn"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_hhn5k"]
+[ext_resource type="PackedScene" uid="uid://crf3700kv03mq" path="res://scenes/level.tscn" id="2_jxj4y"]
+[ext_resource type="Texture2D" uid="uid://cgyao224i5y6y" path="res://assets/textures/bg/Gray.png" id="2_pgvx4"]
+[ext_resource type="FontFile" uid="uid://dqyo6byx3sc58" path="res://assets/fonts/Kenney Pixel Square.ttf" id="3_7ikjp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rs4uv"]
+font = ExtResource("3_7ikjp")
+font_size = 48
+font_color = Color(0, 1, 0.166667, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhn5k")
+firstLevel = ExtResource("2_jxj4y")
+
+[node name="BG" parent="." instance=ExtResource("1_7y1nn")]
+bg_texture = ExtResource("2_pgvx4")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "MARTIAN MIKE"
+label_settings = SubResource("LabelSettings_rs4uv")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 127.0
+offset_right = 169.0
+offset_bottom = 163.0
+scale = Vector2(1.72386, 1.79088)
+theme_override_fonts/font = ExtResource("3_7ikjp")
+theme_override_font_sizes/font_size = 18
+text = "START"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 126.0
+offset_right = 331.0
+offset_bottom = 162.0
+scale = Vector2(1.71654, 1.82539)
+theme_override_fonts/font = ExtResource("3_7ikjp")
+theme_override_font_sizes/font_size = 18
+text = "QUIT
+"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
