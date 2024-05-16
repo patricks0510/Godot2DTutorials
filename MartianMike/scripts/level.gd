@@ -2,7 +2,7 @@ extends Node2D
 
 @export var nextLevel: PackedScene = null
 @export var isFinalLevel: bool = false
-@export var level_time = 5
+@export var level_time = 60
 
 @onready var start = $Start
 @onready var exit = $Exit
@@ -47,10 +47,12 @@ func _process(delta):
 
 
 func _on_deathzone_body_entered(body):
+	time_left = level_time
 	reset_player()
 
 
 func _on_trap_touched_player():
+	time_left = level_time
 	reset_player()
 	
 func reset_player():
@@ -67,7 +69,8 @@ func _on_exit_body_entered(body):
 			await get_tree().create_timer(1.5).timeout
 			if isFinalLevel:
 				ui_layer.show_win_screen(true)
-			get_tree().change_scene_to_packed(nextLevel)
+			if nextLevel!=null:
+				get_tree().change_scene_to_packed(nextLevel)
 
 func _on_level_timer_timeout():
 	if win == false:

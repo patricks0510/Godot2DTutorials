@@ -9,8 +9,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_rs4uv"]
 font = ExtResource("3_7ikjp")
 font_size = 48
+font_color = Color(0, 1, 0.166667, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
